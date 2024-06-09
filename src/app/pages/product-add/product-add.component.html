@@ -1,15 +1,24 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div>
         <label for="name">Name</label>
-        <input id="name" formControlName="name" type="text">
+        <input class="form-control" id="name" formControlName="name" type="text">
+        <div *ngIf="form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)"></div>
+        <span class="text-danger" *ngIf="form.get('name')?.hasError('required')">Name là bắt buộc</span>
+        <span class="text-danger" *ngIf="form.get('name')?.hasError('minlength')">Name ít nhất 6 kí tự</span>
     </div>
     <div>
         <label for="price">Price</label>
-        <input id="price" formControlName="price" type="text">
+        <input class="form-control" id="price" formControlName="price" type="text">
+        <div *ngIf="form.get('price')?.invalid && (form.get('price')?.dirty || form.get('price')?.touched)"></div>
+        <span class="text-danger" *ngIf="form.get('price')?.hasError('required')">price là bắt buộc</span>
     </div>
     <div>
         <label for="description">Description</label>
-        <input id="description" formControlName="description" type="text">
+        <input class="form-control" id="description" formControlName="description" type="text">
+        <div
+            *ngIf="form.get('description')?.invalid && (form.get('description')?.dirty || form.get('description')?.touched)">
+        </div>
+        <span class="text-danger" *ngIf="form.get('description')?.hasError('required')">description là bắt buộc</span>
     </div>
-    <button type="submit">Thêm sản phẩm</button>
+    <button class="btn btn-primary mt-3" type="submit">Thêm sản phẩm</button>
 </form>

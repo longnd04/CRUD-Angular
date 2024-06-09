@@ -1,23 +1,26 @@
-<table>
-    <thead>
-        <tr>
-            <td>Id</td>
-            <td>Name</td>
-            <td>Price</td>
-            <td>Description</td>
-            <td>Acction</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let p of products; index as i">
-            <td>{{i + 1}}</td>
-            <td>{{p.name}}</td>
-            <td>{{p.price}}</td>
-            <td>{{p.description}}</td>
-            <td>
-                <button (click)="onEdit(p.id!)">Sửa</button>
-                <button (click)="onRemove(p.id!)">Xóa</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<h2>Product list</h2>
+<div class="table-responsive text-center">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Price</td>
+                <td>Description</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of products; index as i">
+                <td>{{i + 1}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.price}}</td>
+                <td>{{p.description}}</td>
+                <td>
+                    <button class="btn btn-primary mx-2" (click)="onEdit(p.id!)">Sửa</button>
+                    <button class="btn btn-danger" (click)="onRemove(p.id!)">Xóa</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

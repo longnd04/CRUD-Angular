@@ -1,11 +1,17 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="">
     <div>
-        <label for="name">Name</label>
-        <input id="name" formControlName="email" type="text">
+        <label for="name">Email</label>
+        <input class="form-control" id="name" formControlName="email" type="text">
+        <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)"></div>
+        <span class="text-danger" *ngIf="form.get('email')?.hasError('required')">Không được bỏ trống</span>
+        <span class="text-danger" *ngIf="form.get('email')?.hasError('email')">Phải là email</span>
     </div>
     <div>
-        <label for="price">Price</label>
-        <input id="price" formControlName="password" type="text">
+        <label for="price">Password</label>
+        <input class="form-control" id="price" formControlName="password" type="text">
+        <div *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)">
+        </div>
+        <span class="text-danger" *ngIf="form.get('password')?.hasError('required')">Không được bỏ trống</span>
     </div>
-    <button type="submit">Thêm sản phẩm</button>
+    <button class="btn btn-primary mt-3" type="submit">Sign Up</button>
 </form>

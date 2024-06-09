@@ -13,10 +13,28 @@
       "id": 2
     },
     {
-      "name": "12",
+      "name": "",
       "price": "1",
       "description": "112132",
       "id": 3
+    },
+    {
+      "name": "1231",
+      "price": "123",
+      "description": "13212",
+      "id": 4
+    },
+    {
+      "name": "12132",
+      "price": "123",
+      "description": "21321",
+      "id": 5
+    },
+    {
+      "name": "213312",
+      "price": "01",
+      "description": "12312",
+      "id": 6
     }
   ],
   "users": [
@@ -29,6 +47,11 @@
       "email": "long1@gmail.com",
       "password": "$2a$10$E/ljNck49a0LQlh4ap.k.OuWdxwVSa1Lb9EvbJIZcn/.YCtfO79YC",
       "id": 2
+    },
+    {
+      "email": "long11@gmail.com",
+      "password": "$2a$10$29waAOyS38SpJtIAElMHh.5uqQzhMzwWPevZCBcYZ5BsCerILYHuu",
+      "id": 3
     }
   ]
 }

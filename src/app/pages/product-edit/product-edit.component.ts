@@ -1,7 +1,7 @@
 import { ProductService } from './../../services/product.service';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from '../../Iproduct';
 
@@ -14,9 +14,9 @@ import { IProduct } from '../../Iproduct';
 })
 export class ProductEditComponent {
   form = this.formBuilder.group({
-    name: [''],
-    price: [0],
-    description: [''],
+    name: ['', Validators.required, Validators.minLength(3)],
+    price: [0, Validators.required],
+    description: ['', Validators.required],
   });
   constructor(
     private formBuilder: FormBuilder,
@@ -32,6 +32,7 @@ export class ProductEditComponent {
     });
   }
   onSubmit() {
+    if (this.form.invalid) return;
     const id = this.route.snapshot.params['id'];
     this.productService
       .editProduct({ id, ...this.form.value } as IProduct)

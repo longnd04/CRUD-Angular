@@ -1,7 +1,7 @@
 import { ProductService } from './../../services/product.service';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IProduct } from '../../Iproduct';
 
@@ -14,19 +14,21 @@ import { IProduct } from '../../Iproduct';
 })
 export class ProductAddComponent {
   form = this.formBuilder.group({
-    name: [''],
-    price: [0],
-    description: [''],
+    name: ['', [Validators.required, Validators.minLength(3)]],
+    price: [0, Validators.required],
+    description: ['', Validators.required],
   });
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private productService: ProductService
   ) {}
-  onSubmit(){
-    this.productService.addProduct(this.form.value as IProduct).subscribe(()=> {
-      this.router.navigateByUrl('/')
-    })
-    
+  onSubmit() {
+    if (this.form.invalid) return;
+    this.productService
+      .addProduct(this.form.value as IProduct)
+      .subscribe(() => {
+        this.router.navigateByUrl('/');
+      });
   }
 }

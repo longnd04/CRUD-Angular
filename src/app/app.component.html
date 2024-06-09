@@ -1,33 +1,42 @@
-<div class="bg-gray-100">
-  <div class="min-h-screen flex flex-col">
-    <!-- Navbar -->
-    <nav class="bg-white shadow-md p-4">
-      <div class="container mx-auto flex justify-between items-center">
-        <div class="text-lg font-semibold">Dashboard</div>
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" routerLink="/" >
+              <span data-feather="home"></span>
+              Product
+            </a>
+          </li>
+          <li   class="nav-item">
+            <a routerLink="/add"  class="nav-link" href="#" >
+              Thêm sản phẩm
+            </a>
+          </li>     
+        </ul>
       </div>
     </nav>
-    <!-- Main Content -->
-    <div class="flex flex-1">
-      <!-- Sidebar -->
-      <aside class="w-64 bg-white shadow-md p-4">
-        <ul>
-          <li class="mb-2">
-            <a class="block p-2 bg-blue-500 text-white rounded-md" (click)="navigateTo('/')">Home</a>
-          </li>
-          <li class="mb-2">
-            <a class="block p-2 bg-gray-200 rounded-md" (click)="navigateTo('/add')">ADD Product</a>
-          </li>
-          <li class="mb-2">
-            <a class="block p-2 bg-gray-200 rounded-md" (click)="navigateTo('/edit')">Edit Product</a>
-          </li>
-          <li class="mb-2">
-            <a class="block p-2 bg-gray-200 rounded-md" (click)="navigateTo('/register')">Register</a>
-          </li>
-        </ul>
-      </aside>
-      <main class="flex-1 p-4">
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar"></span>
+            This week
+          </button>
+        </div>
+      </div>
+      <div>
         <router-outlet></router-outlet>
-      </main>
-    </div>
+        
+      </div>
+
+    </main>
   </div>
 </div>

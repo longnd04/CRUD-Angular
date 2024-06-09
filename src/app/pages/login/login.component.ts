@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { AuthService } from './../../services/auth.service';
 import { Component } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,8 +13,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   form = this.formBuilder.group({
-    email: [''],
-    password: [''],
+    email: ['',[Validators.required, Validators.email]],
+    password: ['', Validators.required],
   });
   constructor(
     private formBuilder: FormBuilder,
@@ -22,8 +22,10 @@ export class LoginComponent {
     private authService: AuthService
   ) {}
   onSubmit() {
+    if(this.form.invalid) return 
     this.authService.login(this.form.value as any).subscribe((user) => {
       localStorage.setItem('user', JSON.stringify(user));
+      alert('Đăng nhập thành công')
       this.router.navigateByUrl('/');
     });
   }
